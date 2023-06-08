@@ -44,6 +44,10 @@ class IlluminatePaginatorAdapter implements PaginatorInterface
      */
     public function getLastPage(): int
     {
+        if (!$this->paginator instanceof LengthAwarePaginator) {
+            return 0;
+        }
+
         return $this->paginator->lastPage();
     }
 
@@ -52,6 +56,10 @@ class IlluminatePaginatorAdapter implements PaginatorInterface
      */
     public function getTotal(): int
     {
+        if (!$this->paginator instanceof LengthAwarePaginator) {
+            return 0;
+        }
+
         return $this->paginator->total();
     }
 
